@@ -8,9 +8,9 @@ import {
   FaIdCardAlt,
   FaCheck,
 } from 'react-icons/fa';
-import { Messages, IconSizes, InputTypes, regExp } from 'constants/index';
-import Input from 'components/Input';
-import { toasts } from 'utils';
+import { Messages, IconSizes, InputTypes, regExp } from '@/constants';
+import Input from '@/components/Input';
+import { toasts } from '@/utils';
 import { IProps } from './ContactFormInputs.types';
 import { CheckboxTitle, InputWrap } from './ContactFormInputs.styled';
 

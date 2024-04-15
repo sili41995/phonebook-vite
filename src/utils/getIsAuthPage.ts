@@ -1,8 +1,8 @@
 import { PagePaths } from '@/constants';
 
-const { signInPath, signUpPath, homePath } = PagePaths;
-
 const getIsAuthPage = (path: string): boolean =>
-  [homePath, `/${signInPath}`, `/${signUpPath}`].includes(path);
+  [PagePaths.home, `/${PagePaths.signIn}`, `/${PagePaths.signUp}`].includes(
+    path
+  );
 
 export default getIsAuthPage;

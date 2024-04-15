@@ -12,6 +12,7 @@ const SignUpPage = lazy(() => import('@/pages/SignUpPage'));
 const SignInPage = lazy(() => import('@/pages/SignInPage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
 const ContactsPage = lazy(() => import('@/pages/ContactsPage'));
+const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 const ContactInfo = lazy(() => import('@/components/ContactInfo'));
 const AddContactForm = lazy(() => import('@/components/AddContactForm'));
@@ -20,17 +21,6 @@ const ContactDescription = lazy(
   () => import('@/components/ContactDescription')
 );
 const PrivateRoute = lazy(() => import('@/components/PrivateRoute'));
-
-const {
-  homePath,
-  newContactPath,
-  signInPath,
-  signUpPath,
-  aboutPath,
-  contactsPath,
-  dynamicParam,
-  contactPath,
-} = PagePaths;
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -49,34 +39,41 @@ const App = () => {
     <Loader />
   ) : (
     <Routes>
-      <Route path={homePath} element={<SharedLayout />}>
+      <Route path={PagePaths.home} element={<SharedLayout />}>
         <Route
           index
           element={<PublicRoute restricted element={<SignInPage />} />}
         />
         <Route
-          path={signInPath}
+          path={PagePaths.signIn}
           element={<PublicRoute restricted element={<SignInPage />} />}
         />
         <Route
-          path={signUpPath}
+          path={PagePaths.signUp}
           element={<PublicRoute restricted element={<SignUpPage />} />}
         />
         <Route
-          path={aboutPath}
+          path={PagePaths.about}
           element={<PublicRoute element={<AboutPage />} />}
         />
         <Route
-          path={contactsPath}
+          path={PagePaths.profile}
+          element={<PublicRoute element={<ProfilePage />} />}
+        />
+        <Route
+          path={PagePaths.contacts}
           element={<PrivateRoute element={<ContactsPage />} />}
         >
-          <Route path={`:${dynamicParam}`} element={<ContactDetails />}>
-            <Route path={contactPath} element={<ContactInfo />} />
-            <Route path={aboutPath} element={<ContactDescription />} />
+          <Route
+            path={`:${PagePaths.dynamicParam}`}
+            element={<ContactDetails />}
+          >
+            <Route path={PagePaths.contact} element={<ContactInfo />} />
+            <Route path={PagePaths.about} element={<ContactDescription />} />
             <Route path='*' element={<NotFoundPage />} />
           </Route>
 
-          <Route path={newContactPath} element={<AddContactForm />} />
+          <Route path={PagePaths.newContact} element={<AddContactForm />} />
         </Route>
         <Route path='*' element={<NotFoundPage />} />
       </Route>

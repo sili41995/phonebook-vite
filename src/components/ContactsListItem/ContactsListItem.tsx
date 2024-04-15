@@ -1,12 +1,17 @@
 import { AiFillStar, AiOutlineDelete } from 'react-icons/ai';
-import IconButton from 'components/IconButton';
-import LinkWithQuery from 'components/LinkWithQuery';
-import { selectIsLoading } from 'redux/contacts/selectors';
-import useDeleteContact from 'hooks/useDeleteContact';
-import { useAppSelector } from 'hooks/redux';
+import IconButton from '@/components/IconButton';
+import LinkWithQuery from '@/components/LinkWithQuery';
+import { selectIsLoading } from '@/redux/contacts/selectors';
+import { useDeleteContact } from '@/hooks';
+import { useAppSelector } from '@/hooks/redux';
 import { IProps } from './ContactsListItem.types';
-import { AriaLabels, IconSizes, PagePaths, Positions } from 'constants/index';
-import { IconBtnType } from 'constants/index';
+import {
+  AriaLabels,
+  IconSizes,
+  PagePaths,
+  Positions,
+  IconBtnType,
+} from '@/constants';
 import {
   Email,
   Image,
@@ -23,7 +28,7 @@ const ContactsListItem = ({ contact }: IProps) => {
   const { avatar, name, _id: id, role, phone, email, favorite } = contact;
   const isLoading = useAppSelector(selectIsLoading);
   const deleteContact = useDeleteContact();
-  const contactPath = `${id}/${PagePaths.contactPath}`;
+  const contactPath = `${id}/${PagePaths.contact}`;
 
   const handleDelBtnClick = () => {
     deleteContact(id as string);
@@ -33,7 +38,7 @@ const ContactsListItem = ({ contact }: IProps) => {
     <Item>
       <LinkWithQuery to={contactPath}>
         <ImageContainer>
-          <Image src={avatar as string} alt={name} width="70" height="70" />
+          <Image src={avatar as string} alt={name} width='70' height='70' />
           {favorite && <AiFillStar size={IconSizes.primaryIconSize} />}
         </ImageContainer>
         <ContactInfo>

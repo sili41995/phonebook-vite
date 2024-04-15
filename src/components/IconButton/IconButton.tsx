@@ -1,4 +1,4 @@
-import { BtnType } from 'constants/index';
+import { BtnType } from '@/constants';
 import { IProps } from './IconButton.types';
 import { Button } from './IconButton.styled';
 

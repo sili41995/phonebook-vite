@@ -6,25 +6,25 @@ import {
   AiOutlineEdit,
   AiOutlineStar,
 } from 'react-icons/ai';
-import DefaultMessage from 'components/DefaultMessage';
-import ContactProfile from 'components/ContactProfile';
-import GoBackLink from 'components/GoBackLink';
-import IconButton from 'components/IconButton';
-import Loader from 'components/Loader';
+import DefaultMessage from '@/components/DefaultMessage';
+import ContactProfile from '@/components/ContactProfile';
+import GoBackLink from '@/components/GoBackLink';
+import IconButton from '@/components/IconButton';
+import Loader from '@/components/Loader';
 import {
   AriaLabels,
   FetchStatuses,
   IconBtnType,
   IconSizes,
   PagePaths,
-} from 'constants/index';
-import { IContact } from 'types/types';
-import contactsServiceApi from 'service/contactsServiceApi';
-import { makeBlur, toasts } from 'utils';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import useDeleteContact from 'hooks/useDeleteContact';
-import { selectIsLoading } from 'redux/contacts/selectors';
-import { updateContactStatus } from 'redux/contacts/operations';
+} from '@/constants';
+import { IContact } from '@/types/types';
+import contactsServiceApi from '@/service/contactsServiceApi';
+import { makeBlur, toasts } from '@/utils';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { useDeleteContact } from '@/hooks';
+import { selectIsLoading } from '@/redux/contacts/selectors';
+import { updateContactStatus } from '@/redux/contacts/operations';
 import {
   ButtonsContainer,
   Container,
@@ -169,7 +169,7 @@ const ContactDetails = () => {
           setContact={updateContact}
         />
       )}
-      {isFetchError && <DefaultMessage message="Contact is absent" />}
+      {isFetchError && <DefaultMessage message='Contact is absent' />}
     </Container>
   );
 };

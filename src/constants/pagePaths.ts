@@ -1,12 +1,13 @@
-enum PagePaths {
-  homePath = '/',
-  contactsPath = 'contacts',
-  aboutPath = 'about',
-  signUpPath = 'signup',
-  signInPath = 'signin',
-  addNewContactPath = '/contacts/new-contact',
-  contactPath = 'contact',
-  newContactPath = 'new-contact',
+const enum PagePaths {
+  home = '/',
+  profile = 'profile',
+  contacts = 'contacts',
+  about = 'about',
+  signUp = 'signup',
+  signIn = 'signin',
+  addNewContact = '/contacts/new-contact',
+  contact = 'contact',
+  newContact = 'new-contact',
   dynamicParam = 'id',
 }
 

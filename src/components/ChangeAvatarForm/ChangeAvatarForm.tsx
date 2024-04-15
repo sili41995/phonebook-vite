@@ -1,18 +1,13 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { SlPaperClip, SlBan } from 'react-icons/sl';
-import {
-  AriaLabels,
-  IconBtnType,
-  IconSizes,
-  InputTypes,
-} from 'constants/index';
-import { useAppSelector } from 'hooks/redux';
-import { selectIsLoading } from 'redux/auth/selectors';
-import { IAvatar } from 'types/types';
-import AcceptBtn from 'components/AcceptBtn';
-import IconButton from 'components/IconButton';
-import Input from 'components/Input';
+import { AriaLabels, IconBtnType, IconSizes, InputTypes } from '@/constants';
+import { useAppSelector } from '@/hooks/redux';
+import { selectIsLoading } from '@/redux/auth/selectors';
+import { IAvatar } from '@/types/types';
+import AcceptBtn from '@/components/AcceptBtn';
+import IconButton from '@/components/IconButton';
+import Input from '@/components/Input';
 import { IProps } from './ChangeAvatarForm.types';
 import { ButtonsList, Item, Form } from './ChangeAvatarForm.styled';
 
@@ -44,7 +39,7 @@ const ChangeAvatarForm: FC<IProps> = ({
       ) : (
         <Input
           settings={{ ...register('avatar') }}
-          accept="image/png, image/jpeg, image/jpg"
+          accept='image/png, image/jpeg, image/jpg'
           onChange={onChangeInput}
           type={InputTypes.file}
           aria-label={AriaLabels.avatar}

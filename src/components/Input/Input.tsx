@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import IconButton from 'components/IconButton';
+import IconButton from '@/components/IconButton';
 import { IProps } from './Input.types';
-import { Positions, InputTypes } from 'constants/index';
+import { Positions, InputTypes } from '@/constants';
 import { Container, Label, StyledInput } from './Input.styled';
 
 const Input: FC<IProps> = ({
@@ -38,7 +38,7 @@ const Input: FC<IProps> = ({
           onBtnClick={action}
           btnType={btnType}
           position={Positions.absolute}
-          top="center"
+          top='center'
           icon={btnIcon}
           height={36}
           inputWrap

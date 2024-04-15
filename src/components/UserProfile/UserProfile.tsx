@@ -1,13 +1,13 @@
 import { ChangeEvent, FC, useRef, useState } from 'react';
 import { SlPhone, SlEvent, SlLocationPin } from 'react-icons/sl';
-import { IconSizes, Messages } from 'constants/index';
-import { IProps } from './UserProfile.types';
 import { SubmitHandler } from 'react-hook-form';
-import { IAvatar } from 'types/types';
-import { getProfileFormData, onChangeAvatar, toasts } from 'utils';
-import ImageContainer from 'components/ImageContainer';
-import { useAppDispatch } from 'hooks/redux';
-import { updateUserAvatar } from 'redux/auth/operations';
+import { IconSizes, Messages } from '@/constants';
+import { IAvatar } from '@/types/types';
+import { getProfileFormData, onChangeAvatar, toasts } from '@/utils';
+import ImageContainer from '@/components/ImageContainer';
+import { useAppDispatch } from '@/hooks/redux';
+import { updateUserAvatar } from '@/redux/auth/operations';
+import { IProps } from './UserProfile.types';
 import {
   InfoList,
   Email,

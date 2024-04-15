@@ -1,4 +1,4 @@
-import initialState from 'redux/initialState';
+import initialState from '@/redux/initialState';
 import {
   IAvatar,
   IContact,
@@ -8,7 +8,7 @@ import {
   IFetchContactsRes,
   ISignInRes,
   ISignUpRes,
-} from 'types/types';
+} from '@/types/types';
 
 class ContactsServiceApi {
   private BASE_URL = 'https://contacts-rest-api-ts.onrender.com/api';

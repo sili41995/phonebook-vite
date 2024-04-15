@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { IStyledProps } from './PaginationBar.types';
-import { setBtnDisplayProp } from 'utils';
+import { setBtnDisplayProp } from '@/utils';
 
 export const List = styled.ul`
   display: flex;

@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { PagePaths } from 'constants/index';
+import { PagePaths } from '@/constants';
 import { List, ListItem } from './PublicLinks.styled';
 
 const PublicLinks = () => {
-  const signUpPagePath = `/${PagePaths.signUpPath}`;
-  const signInPagePath = `/${PagePaths.signInPath}`;
+  const signUpPagePath = `/${PagePaths.signUp}`;
+  const signInPagePath = `/${PagePaths.signIn}`;
 
   return (
     <List>

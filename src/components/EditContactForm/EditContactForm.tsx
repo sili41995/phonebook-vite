@@ -2,17 +2,22 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FaTimes } from 'react-icons/fa';
-import { selectIsLoading } from 'redux/contacts/selectors';
-import { updateContact } from 'redux/contacts/operations';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { IContact } from 'types/types';
+import { selectIsLoading } from '@/redux/contacts/selectors';
+import { updateContact } from '@/redux/contacts/operations';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { IContact } from '@/types/types';
 import { IProps } from './EditContactForm.types';
-import IconButton from 'components/IconButton';
-import ContactFormInputs from 'components/ContactFormInputs';
-import ModalForm from 'components/ModalForm';
-import AcceptBtn from 'components/AcceptBtn';
-import { AriaLabels, IconBtnType, IconSizes, PagePaths } from 'constants/index';
-import { toasts } from 'utils';
+import IconButton from '@/components/IconButton';
+import ContactFormInputs from '@/components/ContactFormInputs';
+import ModalForm from '@/components/ModalForm';
+import AcceptBtn from '@/components/AcceptBtn';
+import {
+  AriaLabels,
+  IconBtnType,
+  IconSizes,
+  PagePaths,
+} from '@/constants/index';
+import { toasts } from '@/utils';
 import { ButtonsList, Item, Form, Title } from './EditContactForm.styled';
 
 const EditContactForm = ({

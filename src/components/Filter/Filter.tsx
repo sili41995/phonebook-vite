@@ -5,9 +5,9 @@ import {
   FaSistrix,
   FaTimes,
 } from 'react-icons/fa';
-import { makeBlur } from 'utils';
-import IconButton from 'components/IconButton';
-import Input from 'components/Input';
+import { makeBlur } from '@/utils';
+import IconButton from '@/components/IconButton';
+import Input from '@/components/Input';
 import {
   AriaLabels,
   FormTypes,
@@ -16,9 +16,9 @@ import {
   InputTypes,
   SearchParamsKeys,
   SortTypes,
-} from 'constants/index';
+} from '@/constants';
 import { FilterContainer, ButtonsList, Item } from './Filter.styled';
-import useSetSearchParams from 'hooks/useSetSearchParams';
+import { useSetSearchParams } from '@/hooks';
 
 const { FILTER_SP_KEY, SORT_SP_KEY } = SearchParamsKeys;
 const { DESC_SORT_TYPE, ASC_SORT_TYPE } = SortTypes;

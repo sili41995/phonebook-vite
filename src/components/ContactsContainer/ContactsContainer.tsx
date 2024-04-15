@@ -1,17 +1,17 @@
 import { useMemo, FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { IProps } from './ContactsContainer.types';
-import { SearchParamsKeys } from 'constants/index';
-import { useAppSelector } from 'hooks/redux';
-import { selectContacts } from 'redux/contacts/selectors';
+import { SearchParamsKeys } from '@/constants';
+import { useAppSelector } from '@/hooks/redux';
+import { selectContacts } from '@/redux/contacts/selectors';
 import {
   filterContactsByName,
   getVisibleContacts,
   sortContactsByName,
-} from 'utils';
-import ContactsList from 'components/ContactsList';
-import PaginationBar from 'components/PaginationBar';
-import DefaultMessage from 'components/DefaultMessage';
+} from '@/utils';
+import ContactsList from '@/components/ContactsList';
+import PaginationBar from '@/components/PaginationBar';
+import DefaultMessage from '@/components/DefaultMessage';
 import { Container } from './ContactsContainer.styled';
 
 const { FILTER_SP_KEY, SORT_SP_KEY, PAGE_SP_KEY } = SearchParamsKeys;
@@ -53,7 +53,7 @@ const ContactsContainer: FC<IProps> = ({ quantity }) => {
           )}
         </>
       ) : (
-        <DefaultMessage message="Contact list is empty" />
+        <DefaultMessage message='Contact list is empty' />
       )}
     </Container>
   );

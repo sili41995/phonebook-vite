@@ -1,14 +1,14 @@
 import { MouseEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SlLogout, SlPlus } from 'react-icons/sl';
-import IconButton from 'components/IconButton';
-import Filter from 'components/Filter';
-import LinkWithQuery from 'components/LinkWithQuery';
-import { makeBlur, toasts, getIsContactsPage } from 'utils';
-import { selectContacts } from 'redux/contacts/selectors';
-import { signOutUser } from 'redux/auth/operations';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { IconBtnType, IconSizes, PagePaths } from 'constants/index';
+import IconButton from '@/components/IconButton';
+import Filter from '@/components/Filter';
+import LinkWithQuery from '@/components/LinkWithQuery';
+import { makeBlur, toasts, getIsContactsPage } from '@/utils';
+import { selectContacts } from '@/redux/contacts/selectors';
+import { signOutUser } from '@/redux/auth/operations';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { IconBtnType, IconSizes, PagePaths } from '@/constants';
 import { LinkContainer } from './PrivateLinks.styled';
 
 const PrivateLinks = () => {
@@ -25,7 +25,7 @@ const PrivateLinks = () => {
       .unwrap()
       .then(() => {
         toasts.successToast('Goodbye!');
-        navigate(PagePaths.homePath);
+        navigate(PagePaths.home);
       })
       .catch((error) => {
         toasts.errorToast(error);
@@ -35,7 +35,7 @@ const PrivateLinks = () => {
   return (
     <LinkContainer>
       {showFilter && <Filter />}
-      <LinkWithQuery to={PagePaths.addNewContactPath}>
+      <LinkWithQuery to={PagePaths.addNewContact}>
         <SlPlus />
         <span>New Contact</span>
       </LinkWithQuery>
@@ -43,7 +43,7 @@ const PrivateLinks = () => {
         btnType={IconBtnType.logout}
         onBtnClick={onLogoutBtnClick}
         icon={<SlLogout size={IconSizes.otherIconSize} />}
-        title="Signout"
+        title='Signout'
       />
     </LinkContainer>
   );

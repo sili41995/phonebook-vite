@@ -6,6 +6,8 @@ export const Container = styled.div`
   width: 230px;
   flex-shrink: 0;
   gap: ${({ theme }) => theme.spacing(10)};
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const UserData = styled.div`

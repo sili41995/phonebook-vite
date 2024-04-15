@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Container, Image } from './ImageContainer.styled';
 import { IProps } from './ImageContainer.types';
-import ChangeAvatarForm from 'components/ChangeAvatarForm';
+import ChangeAvatarForm from '@/components/ChangeAvatarForm';
 
 const ImageContainer: FC<IProps> = ({
   avatar,
@@ -15,7 +15,7 @@ const ImageContainer: FC<IProps> = ({
   <Container>
     <Image
       src={avatar}
-      alt="profile photo"
+      alt='profile photo'
       width={imgSize}
       height={imgSize}
       ref={avatarRef}

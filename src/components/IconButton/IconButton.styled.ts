@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { setButtonColor, setIconFill, setIconHoverEffect } from 'utils';
+import { setButtonColor, setIconFill, setIconHoverEffect } from '@/utils';
 import { IStyledProps } from './IconButton.types';
 
 export const Button = styled.button<IStyledProps>`

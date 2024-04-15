@@ -1,8 +1,8 @@
 import { FC, MouseEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { IProps } from './PaginationBar.types';
-import { getPageNumbers, getPaginationBarSettings, makeBlur } from 'utils';
-import { AriaLabels, SearchParamsKeys } from 'constants/index';
+import { getPageNumbers, getPaginationBarSettings, makeBlur } from '@/utils';
+import { AriaLabels, SearchParamsKeys } from '@/constants';
 import { Button, Item, List, TemplateItem } from './PaginationBar.styled';
 
 const { PAGE_SP_KEY } = SearchParamsKeys;

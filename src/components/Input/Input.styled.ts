@@ -9,7 +9,7 @@ import {
   setInputFontColor,
   setInputFontSize,
   setInputHoverEffect,
-} from 'utils';
+} from '@/utils';
 import { IStyledProps } from './Input.types';
 
 export const Container = styled.span`

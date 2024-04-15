@@ -10,7 +10,7 @@ const useDeleteContact = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { search, pathname } = useLocation();
-  const redirectPath = `/${PagePaths.contactsPath + search}`;
+  const redirectPath = `/${PagePaths.contacts + search}`;
 
   useEffect(() => {
     if (contactId) {

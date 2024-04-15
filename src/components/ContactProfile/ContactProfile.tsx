@@ -2,14 +2,14 @@ import { ChangeEvent, FC, Suspense, useRef, useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { NavLink, Outlet } from 'react-router-dom';
 import { IProps } from './ContactProfile.types';
-import Loader from 'components/Loader';
-import ImageContainer from 'components/ImageContainer';
-import EditContactForm from 'components/EditContactForm';
-import { Messages, PagePaths } from 'constants/index';
-import { getProfileFormData, onChangeAvatar, toasts } from 'utils';
-import { IAvatar } from 'types/types';
-import { useAppDispatch } from 'hooks/redux';
-import { updateContactAvatar } from 'redux/contacts/operations';
+import Loader from '@/components/Loader';
+import ImageContainer from '@/components/ImageContainer';
+import EditContactForm from '@/components/EditContactForm';
+import { Messages, PagePaths } from '@/constants';
+import { getProfileFormData, onChangeAvatar, toasts } from '@/utils';
+import { IAvatar } from '@/types/types';
+import { useAppDispatch } from '@/hooks/redux';
+import { updateContactAvatar } from '@/redux/contacts/operations';
 import {
   ContactDesc,
   ContactName,
@@ -75,7 +75,7 @@ const ContactProfile: FC<IProps> = ({
         handleFormSubmit={handleFormSubmit}
         onChangeInput={onChangeInput}
         onCancelBtnClick={onCancelBtnClick}
-        imgSize="200"
+        imgSize='200'
       />
       {editContact ? (
         <EditContactForm {...otherProps} contact={contact} />
@@ -88,10 +88,10 @@ const ContactProfile: FC<IProps> = ({
           <NavBar>
             <NavList>
               <ListItem>
-                <NavLink to={PagePaths.contactPath}>Contact</NavLink>
+                <NavLink to={PagePaths.contact}>Contact</NavLink>
               </ListItem>
               <ListItem>
-                <NavLink to={PagePaths.aboutPath}>About</NavLink>
+                <NavLink to={PagePaths.about}>About</NavLink>
               </ListItem>
             </NavList>
           </NavBar>

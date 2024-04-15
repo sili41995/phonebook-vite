@@ -17,7 +17,7 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(signUpUser.fulfilled, (state, { payload }) => ({
+      .addCase(signUpUser.fulfilled, () => ({
         ...initialState.auth,
       }))
       .addCase(signInUser.fulfilled, (state, { payload }) => ({
