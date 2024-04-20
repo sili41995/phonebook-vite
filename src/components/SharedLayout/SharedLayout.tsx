@@ -3,7 +3,9 @@ import { Outlet, useLocation } from 'react-router-dom';
 import NavigationBar from '@/components/NavigationBar';
 import Loader from '@/components/Loader';
 import { getIsContactsPage, setAuthPageBackgroundColor } from '@/utils';
-import { Container, Header, Main, Section } from './SharedLayout.styled';
+import { Header, Main, Section } from './SharedLayout.styled';
+import MobileMenu from '@/components/MobileMenu';
+import Container from '@/components/Container';
 
 const SharedLayout = () => {
   const { pathname } = useLocation();
@@ -16,6 +18,7 @@ const SharedLayout = () => {
       <Header>
         <Container>
           <NavigationBar />
+          <MobileMenu />
         </Container>
       </Header>
       <Main>

@@ -1,9 +1,10 @@
-import { MouseEvent, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { BtnType, IconBtnType, Positions } from '@/constants';
+import { BtnClickEvt } from '@/types/types';
 
 export interface IProps {
   icon: ReactNode;
-  onBtnClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  onBtnClick?: (e: BtnClickEvt) => void;
   type?: BtnType;
   btnType: IconBtnType;
   position?: Positions;

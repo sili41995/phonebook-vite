@@ -3,13 +3,60 @@ declare module '@emotion/react' {
 }
 
 interface ITheme {
-  colors: { [key: string]: string };
-  shadows: { [key: string]: string };
-  fontWeight: { [key: string]: number };
-  fontSize: { [key: string]: number };
-  padding: { [key: string]: number };
-  borderRadius: { [key: string]: number };
-  deskContainerWidth: number;
+  colors: {
+    primaryColor: string;
+    secondaryColor: string;
+    otherColor: string;
+    otherLinkColor: string;
+    primaryFontColor: string;
+    secondaryFontColor: string;
+    otherFontColor: string;
+    authPageBackgroundColor: string;
+    authFormBackgroundColor: string;
+    btnBackgroundColor: string;
+    whiteColor: string;
+    greyColor: string;
+    lightgreyColor: string;
+    redBtnColor: string;
+    blueBtnColor: string;
+    greenBtnColor: string;
+    yellowBtnColor: string;
+    lightgreyBtnColor: string;
+    redIconColor: string;
+    blueIconColor: string;
+    greenIconColor: string;
+    yellowIconColor: string;
+    lightgreyIconColor: string;
+    borderColor: string;
+    contactPrimaryTextColor: string;
+    contactSecondaryTextColor: string;
+  };
+  shadows: {
+    primaryShadow: string;
+    secondaryShadow: string;
+  };
+  fontWeight: {
+    primaryFontWeight: number;
+    secondaryFontWeight: number;
+    otherFontWeight: number;
+  };
+  fontSize: {
+    titleFontSize: number;
+    subtitleFontSize: number;
+    primaryFontSize: number;
+    secondaryFontSize: number;
+    otherFontSize: number;
+  };
+  padding: {
+    paddingContainer: number;
+    paddingAuthForm: number;
+  };
+  borderRadius: {
+    primaryBorderRadius: number;
+    secondaryBorderRadius: number;
+    otherBorderRadius: number;
+    navBarBorderRadius: number;
+  };
   primaryGap: number;
   transitionDurationAndFunc: string;
   spacing: (value?: number) => string;
@@ -71,7 +118,6 @@ const theme: ITheme = {
     otherBorderRadius: 30,
     navBarBorderRadius: 10,
   },
-  deskContainerWidth: 1200,
   primaryGap: 20,
   transitionDurationAndFunc: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   spacing: (value = 1) => `${value * 4}px`,

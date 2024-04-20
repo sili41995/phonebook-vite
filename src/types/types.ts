@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react';
 import { SetURLSearchParams } from 'react-router-dom';
 
 export type ProfileEntry = [string, string | boolean | FileList];
@@ -111,3 +112,5 @@ export interface IUseSetSearchParams {
   searchParams: URLSearchParams;
   setSearchParams: SetURLSearchParams;
 }
+
+export type BtnClickEvt = MouseEvent<HTMLButtonElement>;

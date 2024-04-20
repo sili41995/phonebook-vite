@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { IStyledProps } from './SharedLayout.types';
 
 export const Header = styled.header`
   display: inline-block;
@@ -7,17 +6,6 @@ export const Header = styled.header`
   padding-top: ${({ theme }) => theme.spacing(5)};
   padding-bottom: ${({ theme }) => theme.spacing(5)};
   background-color: ${({ theme }) => theme.colors.otherColor};
-`;
-
-export const Container = styled.div<IStyledProps>`
-  width: 1200px;
-  display: ${({ isContactsPage }) => (isContactsPage ? 'flex' : 'block')};
-  gap: ${({ isContactsPage, theme }) =>
-    isContactsPage ? `${theme.primaryGap}px` : 0};
-  padding-left: ${({ theme }) => `${theme.padding.paddingContainer}px`};
-  padding-right: ${({ theme }) => `${theme.padding.paddingContainer}px`};
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 export const Main = styled.main``;

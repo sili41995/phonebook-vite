@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   AiFillStar,
@@ -10,78 +10,40 @@ import DefaultMessage from '@/components/DefaultMessage';
 import ContactProfile from '@/components/ContactProfile';
 import GoBackLink from '@/components/GoBackLink';
 import IconButton from '@/components/IconButton';
-import Loader from '@/components/Loader';
-import {
-  AriaLabels,
-  FetchStatuses,
-  IconBtnType,
-  IconSizes,
-  PagePaths,
-} from '@/constants';
-import { IContact } from '@/types/types';
-import contactsServiceApi from '@/service/contactsServiceApi';
-import { makeBlur, toasts } from '@/utils';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { AriaLabels, IconBtnType, IconSizes, PagePaths } from '@/constants';
+import { BtnClickEvt } from '@/types/types';
+import { makeBlur } from '@/utils';
+import { useAppSelector } from '@/hooks/redux';
 import { useDeleteContact } from '@/hooks';
 import { selectIsLoading } from '@/redux/contacts/selectors';
-import { updateContactStatus } from '@/redux/contacts/operations';
 import {
   ButtonsContainer,
   Container,
   ButtonsList,
   Item,
 } from './ContactDetails.styled';
+import { IProps } from './ContactDetails.types';
 
-const { idle, pending, resolved, rejected } = FetchStatuses;
-
-const ContactDetails = () => {
+const ContactDetails: FC<IProps> = ({
+  contact,
+  updateContact,
+  onFavoriteBtnClick,
+  isFetchError,
+  isLoaded,
+}) => {
   const deleteContact = useDeleteContact();
-  const dispatch = useAppDispatch();
-  const [contact, setContact] = useState<IContact | null>(null);
   const [editContact, setEditContact] = useState<boolean>(false);
-  const [fetchContactStatus, setFetchContactStatus] = useState<FetchStatuses>(
-    () => idle
-  );
   const id = useParams()[PagePaths.dynamicParam];
   const isLoading = useAppSelector(selectIsLoading);
-  const isLoadingContact = fetchContactStatus === pending;
-  const isLoadedContact = fetchContactStatus === resolved && contact;
-  const isFetchError = fetchContactStatus === rejected;
   const favoriteBtnIcon = contact?.favorite ? (
     <AiFillStar size={IconSizes.primaryIconSize} />
   ) : (
     <AiOutlineStar size={IconSizes.primaryIconSize} />
   );
+  const isLoadedContact = isLoaded && contact;
 
   useEffect(() => {
     setEditContact(false);
-  }, [id]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    const getContact = async (id: string) => {
-      setFetchContactStatus(pending);
-      try {
-        const contact = await contactsServiceApi.fetchContactById({
-          id,
-          signal: controller.signal,
-        });
-        setContact(contact);
-        setFetchContactStatus(resolved);
-      } catch (error) {
-        if (error instanceof Error && error.name !== 'AbortError') {
-          toasts.errorToast(error.message);
-          setFetchContactStatus(rejected);
-        }
-      }
-    };
-
-    id && getContact(id);
-
-    return () => {
-      controller.abort();
-    };
   }, [id]);
 
   const onDelBtnClick = () => {
@@ -90,39 +52,12 @@ const ContactDetails = () => {
     }
   };
 
-  const onEditBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const onEditBtnClick = (e: BtnClickEvt) => {
     setEditContact((prevState) => !prevState);
     makeBlur(e.currentTarget);
   };
 
-  const onFavoriteBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    makeBlur(e.currentTarget);
-
-    if (!contact?._id) return;
-
-    const { favorite, _id: id } = contact;
-    const data = { favorite: !favorite };
-    dispatch(updateContactStatus({ data, id }))
-      .unwrap()
-      .then(() => {
-        toasts.successToast('Contact status updated successfully');
-        setContact(
-          (prevState) =>
-            ({ ...prevState, favorite: !prevState?.favorite } as IContact)
-        );
-      })
-      .catch((error) => {
-        toasts.errorToast(error);
-      });
-  };
-
-  const updateContact = (data: IContact): void => {
-    setContact(data);
-  };
-
-  return isLoadingContact ? (
-    <Loader />
-  ) : (
+  return (
     <Container>
       <ButtonsContainer>
         <GoBackLink height={36} />

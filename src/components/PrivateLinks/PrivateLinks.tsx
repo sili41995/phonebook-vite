@@ -1,4 +1,3 @@
-import { MouseEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SlLogout, SlPlus } from 'react-icons/sl';
 import IconButton from '@/components/IconButton';
@@ -10,6 +9,7 @@ import { signOutUser } from '@/redux/auth/operations';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { IconBtnType, IconSizes, PagePaths } from '@/constants';
 import { LinkContainer } from './PrivateLinks.styled';
+import { BtnClickEvt } from '@/types/types';
 
 const PrivateLinks = () => {
   const contacts = useAppSelector(selectContacts);
@@ -19,7 +19,7 @@ const PrivateLinks = () => {
   const isContactsPage = getIsContactsPage(pathname);
   const showFilter = isContactsPage && Boolean(contacts.length);
 
-  const onLogoutBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const onLogoutBtnClick = (e: BtnClickEvt) => {
     makeBlur(e.currentTarget);
     dispatch(signOutUser())
       .unwrap()

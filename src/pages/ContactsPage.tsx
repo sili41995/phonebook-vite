@@ -1,7 +1,7 @@
-import { Suspense, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+// import { Outlet } from 'react-router-dom';
 import Loader from '@/components/Loader';
-import ContactsContainer from '@/components/ContactsContainer';
+// import ContactsContainer from '@/components/ContactsContainer';
 import { selectIsLoaded } from '@/redux/contacts/selectors';
 import { fetchContacts } from '@/redux/contacts/operations';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
@@ -23,10 +23,11 @@ const ContactsPage = () => {
     <Loader />
   ) : (
     <>
-      <ContactsContainer quantity={6} />
+      {/* <ContactsContainer quantity={6} />
       <Suspense fallback={<Loader />}>
         <Outlet />
-      </Suspense>
+      </Suspense> */}
+      <div>1</div>
     </>
   );
 };

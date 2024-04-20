@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import {
   FaSortAlphaDown,
   FaSortAlphaUp,
@@ -19,6 +19,7 @@ import {
 } from '@/constants';
 import { FilterContainer, ButtonsList, Item } from './Filter.styled';
 import { useSetSearchParams } from '@/hooks';
+import { BtnClickEvt } from '@/types/types';
 
 const { FILTER_SP_KEY, SORT_SP_KEY } = SearchParamsKeys;
 const { DESC_SORT_TYPE, ASC_SORT_TYPE } = SortTypes;
@@ -45,7 +46,7 @@ const Filter = () => {
     }
   }, [searchParams, setSearchParams, showFilter]);
 
-  const onSortBtnClick = ({ currentTarget }: MouseEvent<HTMLButtonElement>) => {
+  const onSortBtnClick = ({ currentTarget }: BtnClickEvt) => {
     makeBlur(currentTarget);
     const value = descSortType ? ASC_SORT_TYPE : DESC_SORT_TYPE;
     updateSearchParams({ key: SORT_SP_KEY, value });
@@ -56,7 +57,7 @@ const Filter = () => {
     updateSearchParams({ key: FILTER_SP_KEY, value });
   };
 
-  const onFilterBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const onFilterBtnClick = (e: BtnClickEvt) => {
     makeBlur(e.currentTarget);
     setShowFilter((showFilter) => !showFilter);
   };

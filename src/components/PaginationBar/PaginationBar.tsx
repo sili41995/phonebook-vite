@@ -1,9 +1,10 @@
-import { FC, MouseEvent } from 'react';
+import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { IProps } from './PaginationBar.types';
 import { getPageNumbers, getPaginationBarSettings, makeBlur } from '@/utils';
 import { AriaLabels, SearchParamsKeys } from '@/constants';
 import { Button, Item, List, TemplateItem } from './PaginationBar.styled';
+import { BtnClickEvt } from '@/types/types';
 
 const { PAGE_SP_KEY } = SearchParamsKeys;
 
@@ -32,7 +33,7 @@ const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
     e,
     page,
   }: {
-    e: MouseEvent<HTMLButtonElement>;
+    e: BtnClickEvt;
     page: number;
   }): void => {
     makeBlur(e.currentTarget);
