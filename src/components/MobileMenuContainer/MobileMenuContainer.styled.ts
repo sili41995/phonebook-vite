@@ -17,7 +17,7 @@ export const MenuCloseBtn = styled.button`
   position: absolute;
   top: ${({ theme }) => theme.spacing(5)};
   right: ${({ theme }) => theme.padding.paddingContainer}px;
-  /* border: none; */
+  border: none;
   padding: ${({ theme }) => theme.spacing()};
   background-color: transparent;
 

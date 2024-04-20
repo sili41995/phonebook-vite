@@ -1,27 +1,21 @@
-import { NavLink } from 'react-router-dom';
 import PrivateLinks from '@/components/PrivateLinks';
-import PublicLinks from '@/components/PublicLinks';
 import { selectIsLoggedIn } from '@/redux/auth/selectors';
 import { useAppSelector } from '@/hooks/redux';
-import { PagePaths } from '@/constants';
-import { NavContainer, List, ListItem } from './NavigationBar.styled';
+import { authNavLinks, privateNavLinks, publicNavLinks } from '@/constants';
+import { NavContainer } from './NavigationBar.styled';
+import NavLinks from '../NavLinks';
 
 const NavigationBar = () => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
-  const contactsPagePath = `/${PagePaths.contacts}`;
-  const aboutPagePath = `/${PagePaths.about}`;
 
   return (
     <NavContainer>
-      <List>
-        <ListItem>
-          <NavLink to={contactsPagePath}>Contacts</NavLink>
-        </ListItem>
-        <ListItem>
-          <NavLink to={aboutPagePath}>About</NavLink>
-        </ListItem>
-      </List>
-      {isLoggedIn ? <PrivateLinks /> : <PublicLinks />}
+      <NavLinks
+        navLinks={
+          isLoggedIn ? [...publicNavLinks, ...privateNavLinks] : publicNavLinks
+        }
+      />
+      {isLoggedIn ? <PrivateLinks /> : <NavLinks navLinks={authNavLinks} />}
     </NavContainer>
   );
 };

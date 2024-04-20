@@ -114,3 +114,10 @@ export interface IUseSetSearchParams {
 }
 
 export type BtnClickEvt = MouseEvent<HTMLButtonElement>;
+
+export interface INavLink {
+  href: string;
+  title: string;
+}
+
+export type NavLinks = INavLink[];

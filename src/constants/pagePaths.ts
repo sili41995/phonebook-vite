@@ -5,7 +5,6 @@ const enum PagePaths {
   about = 'about',
   signUp = 'signup',
   signIn = 'signin',
-  addNewContact = '/contacts/new-contact',
   contact = 'contact',
   newContact = 'new-contact',
   dynamicParam = 'id',

@@ -1,50 +1,30 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import { SlLogout, SlPlus } from 'react-icons/sl';
-import IconButton from '@/components/IconButton';
+import { useLocation } from 'react-router-dom';
+import { SlPlus } from 'react-icons/sl';
 import Filter from '@/components/Filter';
 import LinkWithQuery from '@/components/LinkWithQuery';
-import { makeBlur, toasts, getIsContactsPage } from '@/utils';
+import { getIsContactsPage } from '@/utils';
 import { selectContacts } from '@/redux/contacts/selectors';
-import { signOutUser } from '@/redux/auth/operations';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { IconBtnType, IconSizes, PagePaths } from '@/constants';
-import { LinkContainer } from './PrivateLinks.styled';
-import { BtnClickEvt } from '@/types/types';
+import { useAppSelector } from '@/hooks/redux';
+import { PagePaths } from '@/constants';
+import { BtnTitle, LinkContainer } from './PrivateLinks.styled';
+import SignOutBtn from '../SignOutBtn';
+import { FC } from 'react';
 
-const PrivateLinks = () => {
+const PrivateLinks: FC = () => {
   const contacts = useAppSelector(selectContacts);
-  const dispatch = useAppDispatch();
   const { pathname } = useLocation();
-  const navigate = useNavigate();
   const isContactsPage = getIsContactsPage(pathname);
   const showFilter = isContactsPage && Boolean(contacts.length);
-
-  const onLogoutBtnClick = (e: BtnClickEvt) => {
-    makeBlur(e.currentTarget);
-    dispatch(signOutUser())
-      .unwrap()
-      .then(() => {
-        toasts.successToast('Goodbye!');
-        navigate(PagePaths.home);
-      })
-      .catch((error) => {
-        toasts.errorToast(error);
-      });
-  };
+  const addNewContactPath = `/${PagePaths.contacts}/${PagePaths.newContact}`;
 
   return (
     <LinkContainer>
       {showFilter && <Filter />}
-      <LinkWithQuery to={PagePaths.addNewContact}>
+      <LinkWithQuery to={addNewContactPath}>
         <SlPlus />
-        <span>New Contact</span>
+        <BtnTitle>New Contact</BtnTitle>
       </LinkWithQuery>
-      <IconButton
-        btnType={IconBtnType.logout}
-        onBtnClick={onLogoutBtnClick}
-        icon={<SlLogout size={IconSizes.otherIconSize} />}
-        title='Signout'
-      />
+      <SignOutBtn />
     </LinkContainer>
   );
 };

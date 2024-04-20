@@ -23,3 +23,5 @@ export const LinkContainer = styled.div`
     }
   }
 `;
+
+export const BtnTitle = styled.span``;

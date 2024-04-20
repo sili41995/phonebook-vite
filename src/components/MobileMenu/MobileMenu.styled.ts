@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const MenuOpenBtn = styled.button`
-  /* border: none; */
+  border: none;
   padding: ${({ theme }) => theme.spacing()};
   background-color: transparent;
 
