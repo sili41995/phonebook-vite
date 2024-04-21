@@ -8,6 +8,16 @@ export const Menu = styled.div`
   height: 100%;
   background-color: ${({ theme }) => theme.colors.otherColor};
 
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    padding-top: ${({ theme }) => theme.spacing(20)};
+    padding-bottom: ${({ theme }) => theme.spacing(20)};
+  }
+
   @media screen and (min-width: 768px) {
     display: none;
   }

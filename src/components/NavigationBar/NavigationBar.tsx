@@ -7,14 +7,13 @@ import NavLinks from '../NavLinks';
 
 const NavigationBar = () => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const navLinks = isLoggedIn
+    ? [...publicNavLinks, ...privateNavLinks]
+    : publicNavLinks;
 
   return (
     <NavContainer>
-      <NavLinks
-        navLinks={
-          isLoggedIn ? [...publicNavLinks, ...privateNavLinks] : publicNavLinks
-        }
-      />
+      <NavLinks navLinks={navLinks} />
       {isLoggedIn ? <PrivateLinks /> : <NavLinks navLinks={authNavLinks} />}
     </NavContainer>
   );

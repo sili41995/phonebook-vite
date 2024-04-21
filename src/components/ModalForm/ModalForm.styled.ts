@@ -11,7 +11,7 @@ import {
 
 export const Container = styled.div<IStyledProps>`
   display: flex;
-  width: ${({ formType }) => setModalFormWidth(formType)};
+  width: 100%;
   flex-direction: column;
   gap: ${({ theme }) => `${theme.primaryGap}px`};
   padding: ${({ formType }) => setModalFormPadding(formType)};
@@ -19,4 +19,8 @@ export const Container = styled.div<IStyledProps>`
   border-radius: ${({ formType }) => setModalFormBorderRadius(formType)};
   box-shadow: ${({ formType }) => setModalFormBoxShadow(formType)};
   margin: ${({ formType }) => setModalFormMargin(formType)};
+
+  @media screen and (min-width: 768px) {
+    width: ${({ formType }) => setModalFormWidth(formType)};
+  }
 `;

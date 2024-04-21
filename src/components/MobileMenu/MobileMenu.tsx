@@ -7,17 +7,17 @@ import MobileMenuContainer from '@/components/MobileMenuContainer';
 const MobileMenu: FC = () => {
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
 
-  const onMenuBtnClick = () => {
+  const setShowMobileMenuState = () => {
     setShowMobileMenu((prevState) => !prevState);
   };
 
   return (
     <Container>
-      <MenuOpenBtn type='button' onClick={onMenuBtnClick}>
+      <MenuOpenBtn type='button' onClick={setShowMobileMenuState}>
         <FaBars size={IconSizes.secondaryIconSize} />
       </MenuOpenBtn>
       {showMobileMenu && (
-        <MobileMenuContainer onMenuCloseBtnClick={onMenuBtnClick} />
+        <MobileMenuContainer setShowMobileMenu={setShowMobileMenuState} />
       )}
     </Container>
   );

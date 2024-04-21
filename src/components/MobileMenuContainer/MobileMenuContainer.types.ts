@@ -1,3 +1,3 @@
 export interface IProps {
-  onMenuCloseBtnClick: () => void;
+  setShowMobileMenu: () => void;
 }
