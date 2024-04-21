@@ -7,8 +7,9 @@ import { makeBlur, toasts } from '@/utils';
 import { useAppDispatch } from '@/hooks/redux';
 import { useNavigate } from 'react-router-dom';
 import { signOutUser } from '@/redux/auth/operations';
+import { IProps } from './SignOutBtn.types';
 
-const SignOutBtn: FC = () => {
+const SignOutBtn: FC<IProps> = ({ setShowMobileMenu }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -18,6 +19,7 @@ const SignOutBtn: FC = () => {
       .unwrap()
       .then(() => {
         toasts.successToast('Goodbye!');
+        setShowMobileMenu && setShowMobileMenu();
         navigate(PagePaths.home);
       })
       .catch((error) => {

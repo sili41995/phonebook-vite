@@ -4,6 +4,7 @@ export const Menu = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
   width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.otherColor};
@@ -18,7 +19,7 @@ export const Menu = styled.div`
     padding-bottom: ${({ theme }) => theme.spacing(20)};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     display: none;
   }
 `;

@@ -1,6 +1,6 @@
-enum SortTypes {
-  ASC_SORT_TYPE = 'asc',
-  DESC_SORT_TYPE = 'decs',
+const enum SortTypes {
+  asc = 'asc',
+  desc = 'desc',
 }
 
 export default SortTypes;

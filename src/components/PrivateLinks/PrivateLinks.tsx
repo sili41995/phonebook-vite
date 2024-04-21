@@ -9,8 +9,9 @@ import { PagePaths } from '@/constants';
 import { BtnTitle, LinkContainer } from './PrivateLinks.styled';
 import SignOutBtn from '../SignOutBtn';
 import { FC } from 'react';
+import { IProps } from './PrivateLinks.types';
 
-const PrivateLinks: FC = () => {
+const PrivateLinks: FC<IProps> = ({setShowMobileMenu}) => {
   const contacts = useAppSelector(selectContacts);
   const { pathname } = useLocation();
   const isContactsPage = getIsContactsPage(pathname);
@@ -20,11 +21,11 @@ const PrivateLinks: FC = () => {
   return (
     <LinkContainer>
       {showFilter && <Filter />}
-      <LinkWithQuery to={addNewContactPath}>
+      <LinkWithQuery to={addNewContactPath} onClick={setShowMobileMenu}>
         <SlPlus />
         <BtnTitle>New Contact</BtnTitle>
       </LinkWithQuery>
-      <SignOutBtn />
+      <SignOutBtn setShowMobileMenu={setShowMobileMenu} />
     </LinkContainer>
   );
 };

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import {
   FaSortAlphaDown,
   FaSortAlphaUp,
@@ -21,15 +21,13 @@ import { FilterContainer, ButtonsList, Item } from './Filter.styled';
 import { useSetSearchParams } from '@/hooks';
 import { BtnClickEvt } from '@/types/types';
 
-const { FILTER_SP_KEY, SORT_SP_KEY } = SearchParamsKeys;
-const { DESC_SORT_TYPE, ASC_SORT_TYPE } = SortTypes;
-
-const Filter = () => {
+const Filter: FC = () => {
   const { searchParams, updateSearchParams, setSearchParams } =
     useSetSearchParams();
-  const filter = searchParams.get(FILTER_SP_KEY) ?? '';
+  const filter = searchParams.get(SearchParamsKeys.filter) ?? '';
   const [showFilter, setShowFilter] = useState<boolean>(() => Boolean(filter));
-  const descSortType = searchParams.get(SORT_SP_KEY) === DESC_SORT_TYPE;
+  const descSortType =
+    searchParams.get(SearchParamsKeys.sort) === SortTypes.desc;
   const clearFilterBtnIcon = Boolean(filter) && (
     <FaTimes size={IconSizes.primaryIconSize} />
   );
@@ -40,21 +38,23 @@ const Filter = () => {
   );
 
   useEffect(() => {
+    console.log(showFilter);
     if (!showFilter) {
-      searchParams.delete(FILTER_SP_KEY);
+      searchParams.delete(SearchParamsKeys.filter);
       setSearchParams(searchParams);
     }
-  }, [searchParams, setSearchParams, showFilter]);
+  }, [showFilter]);
 
   const onSortBtnClick = ({ currentTarget }: BtnClickEvt) => {
     makeBlur(currentTarget);
-    const value = descSortType ? ASC_SORT_TYPE : DESC_SORT_TYPE;
-    updateSearchParams({ key: SORT_SP_KEY, value });
+    const value = descSortType ? SortTypes.asc : SortTypes.desc;
+    updateSearchParams({ key: SearchParamsKeys.sort, value });
   };
 
   const onFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    updateSearchParams({ key: FILTER_SP_KEY, value });
+    console.log(value);
+    updateSearchParams({ key: SearchParamsKeys.filter, value });
   };
 
   const onFilterBtnClick = (e: BtnClickEvt) => {
@@ -63,7 +63,7 @@ const Filter = () => {
   };
 
   const onClearFilterBtnClick = () => {
-    updateSearchParams({ key: FILTER_SP_KEY });
+    updateSearchParams({ key: SearchParamsKeys.filter });
   };
 
   return (

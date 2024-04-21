@@ -4,7 +4,7 @@ export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1279px) {
     display: none;
   }
 `;

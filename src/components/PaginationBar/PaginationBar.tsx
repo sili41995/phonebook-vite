@@ -6,13 +6,11 @@ import { AriaLabels, SearchParamsKeys } from '@/constants';
 import { Button, Item, List, TemplateItem } from './PaginationBar.styled';
 import { BtnClickEvt } from '@/types/types';
 
-const { PAGE_SP_KEY } = SearchParamsKeys;
-
 const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const pageQuantity = Math.ceil(itemsQuantity / quantity);
   const pageNumbers = getPageNumbers(pageQuantity);
-  const currentPage = Number(searchParams.get(PAGE_SP_KEY) ?? 1);
+  const currentPage = Number(searchParams.get(SearchParamsKeys.page) ?? 1);
   const {
     firstPage,
     lastPage,
@@ -37,7 +35,7 @@ const PaginationBar: FC<IProps> = ({ itemsQuantity, quantity, step = 1 }) => {
     page: number;
   }): void => {
     makeBlur(e.currentTarget);
-    searchParams.set(PAGE_SP_KEY, String(page));
+    searchParams.set(SearchParamsKeys.page, String(page));
     setSearchParams(searchParams);
   };
 

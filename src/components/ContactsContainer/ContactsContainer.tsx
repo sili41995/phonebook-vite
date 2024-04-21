@@ -14,15 +14,12 @@ import PaginationBar from '@/components/PaginationBar';
 import DefaultMessage from '@/components/DefaultMessage';
 import { Container } from './ContactsContainer.styled';
 
-const { FILTER_SP_KEY, SORT_SP_KEY, PAGE_SP_KEY } = SearchParamsKeys;
-
 const ContactsContainer: FC<IProps> = ({ quantity }) => {
   const contacts = useAppSelector(selectContacts);
   const [searchParams] = useSearchParams();
-  const filter = searchParams.get(FILTER_SP_KEY) ?? '';
-  const sortType = searchParams.get(SORT_SP_KEY) ?? '';
-
-  const currentPage = Number(searchParams.get(PAGE_SP_KEY) ?? 1);
+  const filter = searchParams.get(SearchParamsKeys.filter) ?? '';
+  const sortType = searchParams.get(SearchParamsKeys.sort) ?? '';
+  const currentPage = Number(searchParams.get(SearchParamsKeys.page) ?? 1);
   const isValidPage = currentPage > 0;
 
   const filteredContacts = useMemo(() => {

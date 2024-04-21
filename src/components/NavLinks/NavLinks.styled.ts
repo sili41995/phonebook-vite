@@ -3,10 +3,10 @@ import styled from '@emotion/styled';
 export const List = styled.ul`
   display: flex;
   gap: ${({ theme }) => theme.primaryGap}px;
-  width: 100%;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1279px) {
     flex-direction: column;
+    width: 100%;
   }
 `;
 

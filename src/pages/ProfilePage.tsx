@@ -6,26 +6,24 @@ import { toasts } from '@/utils';
 import { FetchStatuses } from '@/constants';
 import Loader from '@/components/Loader';
 
-const { idle, pending, resolved, rejected } = FetchStatuses;
-
 const ProfilePage: FC = () => {
   const [fetchUserStatus, setFetchUserStatus] = useState<FetchStatuses>(
-    () => idle
+    () => FetchStatuses.idle
   );
   const [user, setUser] = useState<ICurrentUser | null>(null);
-  const isLoadingUser = fetchUserStatus === pending;
+  const isLoadingUser = fetchUserStatus === FetchStatuses.pending;
 
   useEffect(() => {
     const getUser = async () => {
-      setFetchUserStatus(pending);
+      setFetchUserStatus(FetchStatuses.pending);
       try {
         const user = await contactsServiceApi.refreshUser();
         setUser(user);
-        setFetchUserStatus(resolved);
+        setFetchUserStatus(FetchStatuses.resolved);
       } catch (error) {
         if (error instanceof Error) {
           toasts.errorToast(error.message);
-          setFetchUserStatus(rejected);
+          setFetchUserStatus(FetchStatuses.rejected);
         }
       }
     };
