@@ -13,7 +13,7 @@ export const Container = styled.div<IStyledProps>`
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: ${({ theme }) => `${theme.primaryGap}px`};
+  gap: ${({ theme }) => theme.primaryGap}px;
   padding: ${({ formType }) => setModalFormPadding(formType)};
   background-color: ${({ formType }) => setModalFormBackgroundColor(formType)};
   border-radius: ${({ formType }) => setModalFormBorderRadius(formType)};

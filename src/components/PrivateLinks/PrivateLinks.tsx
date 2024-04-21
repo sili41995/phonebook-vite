@@ -11,12 +11,12 @@ import SignOutBtn from '../SignOutBtn';
 import { FC } from 'react';
 import { IProps } from './PrivateLinks.types';
 
-const PrivateLinks: FC<IProps> = ({setShowMobileMenu}) => {
+const PrivateLinks: FC<IProps> = ({ setShowMobileMenu }) => {
   const contacts = useAppSelector(selectContacts);
   const { pathname } = useLocation();
   const isContactsPage = getIsContactsPage(pathname);
   const showFilter = isContactsPage && Boolean(contacts.length);
-  const addNewContactPath = `/${PagePaths.contacts}/${PagePaths.newContact}`;
+  const addNewContactPath = `/${PagePaths.newContact}`;
 
   return (
     <LinkContainer>

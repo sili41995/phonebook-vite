@@ -5,7 +5,10 @@ export const Container = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => `${theme.primaryGap}px`};
   align-items: center;
-  flex-grow: 1;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const ButtonsContainer = styled.div`

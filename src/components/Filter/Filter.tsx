@@ -38,7 +38,6 @@ const Filter: FC = () => {
   );
 
   useEffect(() => {
-    console.log(showFilter);
     if (!showFilter) {
       searchParams.delete(SearchParamsKeys.filter);
       setSearchParams(searchParams);
@@ -53,7 +52,6 @@ const Filter: FC = () => {
 
   const onFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    console.log(value);
     updateSearchParams({ key: SearchParamsKeys.filter, value });
   };
 

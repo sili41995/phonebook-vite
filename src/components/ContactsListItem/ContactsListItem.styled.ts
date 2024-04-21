@@ -22,6 +22,7 @@ export const Item = styled.li`
 export const ImageContainer = styled.div`
   position: relative;
   flex-shrink: 0;
+
   & svg {
     position: absolute;
     z-index: 10;
@@ -40,9 +41,10 @@ export const ContactInfo = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  & div,
-  & p {
-    width: 165px;
+
+  & > div,
+  & > p {
+    width: calc((100% - 40px) / 3);
     ${({ theme }) => theme.trimText}
   }
 `;

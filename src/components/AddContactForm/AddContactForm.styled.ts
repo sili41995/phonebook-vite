@@ -11,7 +11,11 @@ export const Title = styled.p`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => `${theme.primaryGap}px`};
+  gap: ${({ theme }) => theme.primaryGap}px;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const ButtonsList = styled.ul`

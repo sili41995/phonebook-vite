@@ -3,7 +3,7 @@ import { IStyledProps } from './Container.types';
 
 export const Wrapper = styled.div<IStyledProps>`
   position: relative;
-  width: 500px;
+  width: 100%;
   display: ${({ isContactsPage }) => (isContactsPage ? 'flex' : 'block')};
   gap: ${({ isContactsPage, theme }) =>
     isContactsPage ? `${theme.primaryGap}px` : 0};
@@ -11,6 +11,10 @@ export const Wrapper = styled.div<IStyledProps>`
   padding-right: ${({ theme }) => `${theme.padding.paddingContainer}px`};
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (max-width: 767px) {
+    max-width: 500px;
+  }
 
   @media screen and (min-width: 768px) {
     width: 700px;
