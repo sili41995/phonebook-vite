@@ -7,10 +7,12 @@ export const Item = styled.li`
     `${theme.borderRadius.secondaryBorderRadius}px`};
   border-color: ${({ theme }) => theme.colors.borderColor};
   transition: box-shadow ${({ theme }) => theme.transitionDurationAndFunc};
+
   &:hover,
   &:focus {
     box-shadow: ${({ theme }) => theme.shadows.primaryShadow};
   }
+
   & a {
     display: flex;
     gap: ${({ theme }) => `${theme.primaryGap}px`};
@@ -42,10 +44,19 @@ export const ContactInfo = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  & > div,
-  & > p {
-    width: calc((100% - 40px) / 3);
-    ${({ theme }) => theme.trimText}
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 768px) {
+    & p {
+      ${({ theme }) => theme.trimText}
+    }
+
+    & > div,
+    & > p {
+      width: calc((100% - 40px) / 3);
+    }
   }
 `;
 
